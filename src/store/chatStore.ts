@@ -22,6 +22,7 @@ interface ChatState {
   saveDialog: (messages: Message[]) => void;
   deleteDialog: (dialogId: string) => void;
   clearDialogHistory: () => void;
+  startNewDialog: () => void;
 }
 
 export const useChatStore = create<ChatState>()(
@@ -57,6 +58,7 @@ export const useChatStore = create<ChatState>()(
           dialogHistory: state.dialogHistory.filter((dialog) => dialog.id !== dialogId),
         })),
       clearDialogHistory: () => set({ dialogHistory: [] }),
+      startNewDialog: () => set({ messages: [] }),
     }),
     {
       name: 'chat-storage',
